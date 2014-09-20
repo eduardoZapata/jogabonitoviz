@@ -12,6 +12,10 @@ app.use(express.static(__dirname + '/public'));
 require('./stats/league/points.js')(app,db);
 require('./stats/league/goals.js')(app,db);
 require('./stats/league/conceded.js')(app,db);
+require('./stats/club/points.js')(app,db);
+require('./stats/club/goals.js')(app,db);
+require('./stats/club/conceded.js')(app,db);
+
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
   console.log("Listening on " + port);
