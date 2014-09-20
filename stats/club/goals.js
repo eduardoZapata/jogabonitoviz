@@ -1,5 +1,5 @@
 module.exports = function(app,db) {
-  app.get('/goals/:league@:club',function(req,res) {
+  app.get('/:league@:club',function(req,res) {
         var league = db.get(req.params.league);
         var club = db.get(req.params.club);
         
@@ -11,9 +11,9 @@ module.exports = function(app,db) {
             league.find({
             Date:{$gt:start,$lt:end},
             },function(err, docs) {
-                var goals = goalsData(docs, club);
-                data.push({i:goals});
                 console.log(docs);
+                var goals = goalsData(docs, club);
+                data.push({"a":"b"});
             });
         } 
         res.json(data);
