@@ -29,9 +29,9 @@ var pointsData = function(docs) {
 
     }
 
-    table.sort(function(a, b) {
-        return compareStrings(a.key, b.key);
-    })
+    // table.sort(function(a, b) {
+    //     return compareStrings(a.key, b.key);
+    // })
     console.log(table);
     return table;
 };

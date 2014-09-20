@@ -1,0 +1,15 @@
+.zero-margin {
+	margin: 0px 0px 0px 0px;
+}
+
+.jumbotron {
+	background-image: url('../images/landing.jpg');
+	background-repeat: no-repeat;
+  	color: white;
+  	height: 500px;
+}
+
+.league-selector {
+	width: 300px;
+	display: inline-block;
+}
