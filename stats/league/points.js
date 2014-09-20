@@ -1,19 +1,7 @@
-module.exports = function(app,db) {
-  app.get('/points/:league@:year', function(req,res) {
-    var league = db.get(req.params.league);
-
-    var thisYear = parseInt(req.params.year);
-    var nextYear = thisYear + 1;
-    var start = new Date(thisYear,8,1);
-    var end = new Date(nextYear,6,1);
-
-    league.find({
-    Date:{$gt:start,$lt:end},
-    },function(err,docs){
-        //Assign pointsData to your function
-        var pointsData = function(docs) {
-            var table = [];
+var pointsData = function(docs) {
+            var table = {};
             for(var i = 0;i < docs.length;i++) {
+                console.log(table);
                 var game = docs[i];
                 var home = game.HomeTeam;
                 var away = game.AwayTeam;
@@ -25,16 +13,10 @@ module.exports = function(app,db) {
                 //If the teams do not already exist, add them to the table
                 if(!table[home]) {
                     //var teamObj = {"Name":home, "Points":0};
-                    table.push({
-                        key: home,
-                        value: 0
-                    });
+                    table[home] = 0;
                 } else if(!table[away]) {
                     //var teamObj = {"Name":away, "Points":0};
-                    table.push({
-                        key: away,
-                        value: 0
-                    });
+                    table[away] = 0;
                 }
 
                 if(whoWon == 1) {
@@ -48,10 +30,25 @@ module.exports = function(app,db) {
 
 
             }
+            console.log(table);
             return table;
         };
-        console.log(pointsData);
-        res.json(pointsData);
+module.exports = function(app,db) {
+    console.log('called');
+  app.get('/points/:league@:year', function(req,res) {
+    var league = db.get(req.params.league);
+
+    var thisYear = parseInt(req.params.year);
+    var nextYear = thisYear + 1;
+    var start = new Date(thisYear,8,1);
+    var end = new Date(nextYear,6,1);
+
+    league.find({
+    Date:{$gt:start,$lt:end},
+    },function(err,docs){
+        //Assign pointsData to your function
+        
+        res.json(pointsData(docs));
     });
 
   });
