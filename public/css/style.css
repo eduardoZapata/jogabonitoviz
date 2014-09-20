@@ -3,13 +3,46 @@
 }
 
 .jumbotron {
-	background-image: url('../images/landing.jpg');
+	background-image: url('../images/ronaldinho.jpg');
 	background-repeat: no-repeat;
-  	color: white;
-  	height: 500px;
+	background-size: cover;
+  	color: rgb(245, 255, 0);
+  	height: 900px;
+
 }
 
 .league-selector {
 	width: 300px;
 	display: inline-block;
+}
+
+.graph-container {
+	width: 1000px;
+	margin: 0px auto;
+	padding: 0px;
+}
+
+svg {
+	border-bottom: 3px solid #777;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+.footer .container {
+  margin-top: 18px;
+}
+
+.row {
+	margin-top: 20px;
+	margin-bottom: 50px; 
+}
+
+.col-md-offset-4 {
+	margin-left: 28%;
 }

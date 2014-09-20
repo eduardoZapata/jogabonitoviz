@@ -17,11 +17,4 @@ app.controller("clubDropDown",["$scope","$http",function($scope,$http){
         {name:"Premier League",value:"england"},
         {name:"Seria A",value:"italy"},
       ];
-      $scope.response = function() {
-        var route = '/'+ $scope.selected + '@' + $scope.year;
-        $http.get(route).success(function(data){
-          $scope.news = data;
-          console.log(route)
-        });
-      }
     }]);
