@@ -6,7 +6,7 @@
 	background-image: url('../images/ronaldinho.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
-  	color: rgb(245, 255, 0);
+  	color: rgb(255, 0, 0);
   	height: 900px;
 
 }
@@ -23,6 +23,7 @@
 }
 
 svg {
+	margin: 50px 0px 10px 0px;
 	border-bottom: 3px solid #777;
 }
 

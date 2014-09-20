@@ -48,7 +48,7 @@ function drawBarGraph(data,title) {
    bar.append("text")
       .attr("x", barWidth / 2)
       .attr("y", function(d) { return yS(d.metric) + 20; })
-      .attr('fill','#777')
+      .attr('fill','white')
       .attr("text-anchor", "middle")
       .style("font-size", "20px")
       .text(function(d) { return d.metric; });
@@ -68,7 +68,7 @@ function drawBarGraph(data,title) {
       .attr("y", function(d){return 310 ;})
       .attr('fill','#777')
       .attr("text-anchor", "middle")
-      .style("font-size", "14px")
+      .style("font-size", "12px")
       .style('writing-mode', 'tb')
       .text(function(d){return d.name});
 }
