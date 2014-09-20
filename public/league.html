@@ -25,10 +25,12 @@
    <div class="row">
    <div class="col-md-4 col-md-offset-4" ng-controller="clubDropDown">
    <select>
-    <option ng-click="{{article.selected = league.value}}" ng-repeat="league in leagues" value="league.value">{{league.name}}</option>
+    <option ng-click="{{league.selected = league.value}}" ng-repeat="league in leagues" value="{{league.value}}">{{league.name}}</option>
    </select>
-   <select >   
+   <select >
+    <option ng-click="league.year = season.value" ng-repeat="season in seasons" value="{{season.value}}">{{season.name}}</option>  
    </select>
+   <button ng-click="response()"> Viz!</button>
    </div>    
 </div>
   </div>
