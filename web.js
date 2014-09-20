@@ -3,8 +3,8 @@ var logfmt = require("logfmt");
 var app = express();
 
 var monk = require('monk');
-//var db = require('monk')('mongodb://joga:United99@dbh55.mongolab.com:27557/heroku_app25040865');
-var db = require('monk')('localhost/jogaB');
+var db = require('monk')('mongodb://joga:United99@dbh55.mongolab.com:27557/heroku_app25040865');
+//var db = require('monk')('localhost/jogaB');
 
 app.use(logfmt.requestLogger());
 app.use(express.static(__dirname + '/public'));
