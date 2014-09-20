@@ -11,8 +11,27 @@ module.exports = function(app,db) {
         league.find({
         Date:{$gt:start,$lt:end},
         },function(err,docs){
-            // extract metric
+            var conceded = concededData(docs, club);
+            data.push({i:conceded});
         });
-    });
     }
+    res.json(data);
+    });
+    
 }
+
+var concededData = function(docs, club) {
+    for(var i = 0;i < docs.length;i++) {
+        var game = docs[i];
+        var home = game.HomeTeam;
+        var away = game.AwayTeam;
+        var goals = 0;
+
+        if(club === home) {
+            goals += game.FTAG;
+        } else if(club === away){
+            goals += game.FTHG;
+        }
+    }
+    return goals;
+};
