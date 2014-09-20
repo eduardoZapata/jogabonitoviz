@@ -2,23 +2,25 @@ module.exports = function(app,db) {
   app.get('/:league@:club',function(req,res) {
         var league = db.get(req.params.league);
         var club = req.params.club;
-        
+        console.log(club);
         var data = [];
-        var loc = 0
         for (var i = 2000; i < 2013; i++) {
-            var start = new Date(2000,8,1);
-            var end = new Date(2001,6,1);
+            var start = new Date(i,8,1);
+            var end = new Date(i+1,6,1);
             console.log(data);
             league.find({
             Date:{$gt:start,$lt:end},
             },function(err, docs) {
                 var goals = goalsData(docs, club);
-                console.log(data);
-                data.push(goals);
+                var d = {};
+                d.goals = goals;
+                d.year = i;
+                data.push(d);
+                if(data.length >= 13) {
+                    res.json(data);
+                }
             });
-        } 
-        //console.log(data);
-        res.json(data);
+        }
     });
 }
 
