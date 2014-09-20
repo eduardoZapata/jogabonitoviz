@@ -12,11 +12,37 @@ module.exports = function(app,db) {
         league.find({
         Date:{$gt:start,$lt:end},
         },function(err,docs){
-            //Assign conceded Data to your function
-            //concededData = 
-            
-            //res.json(finalGoals);
+            res.json(concededData(docs));
         });
 
   });
 }
+
+var concededData = function(docs) {
+    var table = {};
+    for(var i = 0;i < docs.length;i++) {
+        var game = docs[i];
+        console.log(game);
+        var home = game.HomeTeam;
+        var away = game.AwayTeam;
+        var homeGoals = game.FTHG;
+        var awayGoals = game.FTAG;
+
+        //If the teams do not already exist, add them to the table
+        if(!table[home]) {
+            //var teamObj = {"Name":home, "Points":0};
+            table[home] = 0;
+        }
+        if(!table[away]) {
+            //var teamObj = {"Name":away, "Points":0};
+            table[away] = 0;
+        }
+
+        table[home] += awayGoals;
+        table[away] += homeGoals;
+
+
+    }
+    console.log(table);
+    return table;
+};
